@@ -4,9 +4,9 @@
 <p>
 Hello {{ app.artist_or_full_name }},
 </p><p>
-Thank you for taking part in the {{ c.EVENT_NAME }} 2025 Art Show.
+Thank you for taking part in the {{ c.EVENT_NAME }} 2026 Art Show.
 {% if app.requested_more_space %}
-	Your reservation is confirmed, but I'm sorry I must inform you that because a great many artists have requested space, I'm unable to grant you all the space you've requested. Space was allocated in a &quot;round-robin&quot; fashion for all artists who submitted their requests by March 31: one space to everyone, then a second space for those who wanted more than one, then a third, and so forth, until space ran out.
+	Your reservation is confirmed, but I'm sorry I must inform you that because a great many artists have requested space, I'm unable to grant you all the space you've requested. Space was allocated in a &quot;round-robin&quot; fashion: one space to everyone, then a second space for those who wanted more than one, then a third, and so forth, until space ran out.
 	</p><p>
 	You have been granted:
 {% else %}
@@ -34,7 +34,13 @@ Banner Name{% if app.mature_display_name != app.display_name %} (General){% endi
 </p><p>
 
 {% if app.website %}<p>Website/Social Media: {{ app.website }}
-	<br/><strong><em>We forgot to ask on the form if it's OK to share a link to your website/social media on the list of participating artists to be posted on the Anthrocon web site &mdash; <a href="mailto:artshow@anthrocon.org" target="_blank">please email me and let me know!</a></em></strong></p>
+	<br/>
+	{% if app.share_website_social %}
+		(OK to
+	{% else %}
+		(we will <strong><em>not</em></strong>
+	{% endif %}
+	share on the list of participating artists to be posted on the {{ c.EVENT_NAME }} web site)
 {% endif %}
 
 {% if app.special_requests_text %}
@@ -78,10 +84,10 @@ Thanks,
 <br/><a href="{{ c.ART_SHOW_RULES_URL }}" target="_blank">Anthrocon Art Show Rules</a>
 {% if app.panels %}
 	<br/>--
-	<br/>P.S. If you can, please consider donating a piece (print or original) for the Anthrocon 2025 Charity Auction and Raffle. Our charity this year is Nose 2 Tail Cat Rescue, a 501(c)(3) non-profit, 100% donation and volunteer-run, no-kill cat rescue. Read over the Charity Auction/Raffle information at <a href="https://anthrocon.org/charity" target="_blank">&lt;https://anthrocon.org/charity&gt;</a> for details on how to donate. (Please note that the Charity Auction/Raffle is a separate event from either of the Art Show auctions; contact &lt;<a href="mailto:charity@anthrocon.org" target="_blank">charity@anthrocon.org</a>&gt; with questions about the Charity Auction and Raffle.)
+	<br/>P.S. If you can, please consider donating a piece (print or original) for the Anthrocon 2026 Charity Auction and Raffle. Our charity this year is J and J Farms Animal Sanctuary, a 501(c)(3) nonprofit “forever home” for over 175 animals who have survived atrocities such as neglect, abandonment and the brink of slaughter. Read over the Charity Auction/Raffle information at <a href="https://anthrocon.org/charity" target="_blank">&lt;https://anthrocon.org/charity&gt;</a> for details on how to donate. (Please note that the Charity Auction/Raffle is a separate event from either of the Art Show auctions; contact &lt;<a href="mailto:charity@anthrocon.org" target="_blank">charity@anthrocon.org</a>&gt; with questions about the Charity Auction and Raffle.)
 	{% if c.BEFORE_CONBOOK_DEADLINE %}
 		<br/>--
-		<br/>P.P.S. The Anthrocon conbook needs submissions! It's a fantastic forum for artists to showcase their talents to thousands of members of the fandom. For full information see <a href="https://www.anthrocon.org/conbook" target="_blank">&lt;https://www.anthrocon.org/conbook&gt;</a>.
+		<br/>P.P.S. The Anthrocon conbook needs submissions! It's a fantastic forum for artists to showcase their talents to thousands of members of the fandom. For full information see <a href="https://www.anthrocon.org/conbook-submissions/" target="_blank">&lt;https://www.anthrocon.org/conbook-submissions/&gt;</a>.
 	{% endif %}
 {% endif %}
 </p>
